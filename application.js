@@ -15,7 +15,7 @@ var canvasHeight = gridHeight + 1;
  
 // 应用 变量
 var store = null; // store类实例
-var grid = null; // grid类实例
+var grid = null; // 网格类实例
 var selectedBrickClass = null;
 var currentButton = null;
 
@@ -23,12 +23,23 @@ $(document).ready(function () {
   canvas = document.getElementById('grid');
   context = canvas.getContext('2d');
 
-  // 清空画布，确保没有内容
-  clearCanvas();
+  grid = new Grid(gridHeight, gridHeight, BRICK_SIZE);
+
+  draw();
 });
 
 // 重置画布
 function clearCanvas() {
   canvas.width = canvasWidth;
   canvas.height = canvasHeight;
+}
+
+// 绘制
+function draw() {
+  clearCanvas();
+
+  // 注意：会将绘制内容向右下移动半个像素，因为需要绘制1像素的线条，而计算机显示1像素线条时，会比2个像素的线条要模糊。
+  // context.translate(0.5, 0.5);
+  
+  grid.draw(context);
 }
