@@ -5,9 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>tracks</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <p>你好世界</p>
-  <p>我叫黄金亮</p>
+  <!-- 网格 -->
+  <section id='grid-container' >
+    <canvas id="grid" ></canvas>
+    <form>
+      <button type="button" id="clear-track" >清除</button>
+      <button type="button" id='save-track' >保存</button>
+      <input type="text" id="track-name" placeholder="路径名称" >
+    </form>
+  </section>
+  <!-- 砖块 -->
+  <section id="bricks-container" >
+    <form>
+      <button type='button' id="square-brick" >方形</button>
+      <button type='button' id="triangle-brick" >三角</button>
+      <button type='button' id="circle-brick" >圆形</button>
+      <button type='button' id="curve-brick" >扇形</button>
+    </form>
+  </section>
+  <!-- 路径列表 -->
+  <section id='tracks-container' >
+    <h1>存储路径</h1>
+  </section>
 </body>
 </html>
