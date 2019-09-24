@@ -39,6 +39,13 @@ function initUI() {
     let id = $(this).attr('id');
     setBrick(id);
   });
+
+  $('#clear-track').click(function (event) {
+    event.preventDefault();
+  
+    grid.clear();
+    draw();
+  })
 };
 
 // 重置画布

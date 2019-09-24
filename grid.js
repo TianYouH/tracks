@@ -45,6 +45,7 @@ Grid.prototype.addBrick = function (brick, context) {
   brick.draw(context);
 }
 
+// 获取指定坐标砖块
 Grid.prototype.getBrickAt = function (column, row) {
   for (let i = 0; i < this.bricks.length; i++) {
     if (this.bricks[i].column === column && this.bricks[i].row === row) {
@@ -52,4 +53,8 @@ Grid.prototype.getBrickAt = function (column, row) {
     }
   }
   return null;
+}
+
+Grid.prototype.clear = function () {
+  this.bricks = [];
 }
