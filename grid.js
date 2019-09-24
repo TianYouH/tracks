@@ -55,6 +55,7 @@ Grid.prototype.getBrickAt = function (column, row) {
   return null;
 }
 
+// 清除砖块
 Grid.prototype.clear = function () {
   this.bricks = [];
 }
