@@ -32,6 +32,13 @@ $(document).ready(function () {
 // 初始化单击事件
 function initUI() {
   $(canvas).click(onGridClicked);
+
+  $('#bricks-container button').click(function (event) {
+    event.preventDefault();
+    
+    let id = $(this).attr('id');
+    setBrick(id);
+  });
 };
 
 // 重置画布
@@ -50,6 +57,7 @@ function draw() {
   grid.draw(context);
 };
 
+// 网格点击事件
 function onGridClicked(event) {
   let mouseX = event.offsetX || event.layerX;
   let mouseY = event.offsetY || event.layerY;
@@ -59,10 +67,36 @@ function onGridClicked(event) {
   createBrickAt(column, row);
 };
 
+// 创建砖块
 function createBrickAt(column, row) {
-  let brick = new Square();
+  if (!selectedBrickClass) return;
+  let brick = new selectedBrickClass();
   brick.column = column;
   brick.row = row;
 
   grid.addBrick(brick, context);
 }
+
+// 设置选中砖块类型
+function setBrick (buttonID) {
+  if (currentButton) {
+    currentButton.removeAttr('disabled');
+  }
+  currentButton = $('#' + buttonID);
+  currentButton.attr('disabled', 'disabled');
+
+  switch (buttonID) {
+    case 'square-brick':
+      selectedBrickClass = Square;
+      break;
+    case 'triangle-brick':
+      selectedBrickClass = Triangle;
+      break;
+    case 'circle-brick':
+      selectedBrickClass = Circle;
+      break;
+    case 'curve-brick':
+      selectedBrickClass = Curve;
+      break;
+  }
+};
