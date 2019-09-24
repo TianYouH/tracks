@@ -64,7 +64,13 @@ function onGridClicked(event) {
 
   let column = Math.floor(mouseX / BRICK_SIZE);
   let row = Math.floor(mouseY / BRICK_SIZE);
-  createBrickAt(column, row);
+  let selectedBrick = grid.getBrickAt(column, row);
+  if (selectedBrick) {
+    selectedBrick.rotation += 90;
+    draw();
+  } else {
+    createBrickAt(column, row);
+  }
 };
 
 // 创建砖块

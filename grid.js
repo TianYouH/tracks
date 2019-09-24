@@ -38,8 +38,18 @@ Grid.prototype.drawGrid = function (context) {
   context.stroke();
 };
 
+// 添加砖块到网格
 Grid.prototype.addBrick = function (brick, context) {
   this.bricks.push(brick);
 
   brick.draw(context);
+}
+
+Grid.prototype.getBrickAt = function (column, row) {
+  for (let i = 0; i < this.bricks.length; i++) {
+    if (this.bricks[i].column === column && this.bricks[i].row === row) {
+      return this.bricks[i];
+    }
+  }
+  return null;
 }
