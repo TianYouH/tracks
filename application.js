@@ -24,7 +24,7 @@ $(document).ready(function () {
   context = canvas.getContext('2d');
 
   grid = new Grid(gridHeight, gridHeight, BRICK_SIZE);
-
+  store = new Store();
   initUI();
   draw();
 });
@@ -45,6 +45,12 @@ function initUI() {
   
     grid.clear();
     draw();
+  })
+
+  $('#save-track').click(function (event) {
+    event.preventDefault();
+    
+    store.saveTrack(grid.bricks);
   })
 };
 
