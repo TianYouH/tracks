@@ -50,7 +50,10 @@ function initUI() {
   $('#save-track').click(function (event) {
     event.preventDefault();
     
-    store.saveTrack(grid.bricks);
+    let trackID = store.saveTrack(grid.bricks);
+    let trackName = $('#track-name').val();
+
+    addTrackToList(trackID, trackName);
   })
 };
 
@@ -119,3 +122,24 @@ function setBrick (buttonID) {
       break;
   }
 };
+
+// 添加 保存轨迹列表
+function addTrackToList(ID, name) {
+  let entry = $('<p>');
+  let link = $("<a href=''>Load</a>");
+
+  link.click(function (event) {
+    event.preventDefault();
+
+    loadTrack(ID);
+  });
+
+  entry.append(link).append('-' + name);
+  $('#tracks-container').append(entry);
+}
+
+function loadTrack(ID) {
+  grid.bricks = store.getTrack(ID);
+
+  draw();
+}
