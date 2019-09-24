@@ -25,21 +25,44 @@ $(document).ready(function () {
 
   grid = new Grid(gridHeight, gridHeight, BRICK_SIZE);
 
+  initUI();
   draw();
 });
+
+// 初始化单击事件
+function initUI() {
+  $(canvas).click(onGridClicked);
+};
 
 // 重置画布
 function clearCanvas() {
   canvas.width = canvasWidth;
   canvas.height = canvasHeight;
-}
+};
 
 // 绘制
 function draw() {
   clearCanvas();
 
   // 注意：会将绘制内容向右下移动半个像素，因为需要绘制1像素的线条，而计算机显示1像素线条时，会比2个像素的线条要模糊。
-  // context.translate(0.5, 0.5);
+  context.translate(0.5, 0.5);
   
   grid.draw(context);
+};
+
+function onGridClicked(event) {
+  let mouseX = event.offsetX || event.layerX;
+  let mouseY = event.offsetY || event.layerY;
+
+  let column = Math.floor(mouseX / BRICK_SIZE);
+  let row = Math.floor(mouseY / BRICK_SIZE);
+  createBrickAt(column, row);
+};
+
+function createBrickAt(column, row) {
+  let brick = new Square();
+  brick.column = column;
+  brick.row = row;
+
+  grid.addBrick(brick, context);
 }

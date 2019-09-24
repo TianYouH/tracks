@@ -9,7 +9,7 @@ var Grid = function (width, height, cellSize) {
 
 Grid.prototype.draw = function (context) {
   this.drawGrid(context);
-  console.log('你好世界：', context);
+  // console.log('你好世界：', context);
   for (let i = 0; i < this.bricks.length; i++) {
     this.bricks[i].draw(context);
   }
@@ -37,3 +37,9 @@ Grid.prototype.drawGrid = function (context) {
 
   context.stroke();
 };
+
+Grid.prototype.addBrick = function (brick, context) {
+  this.bricks.push(brick);
+
+  brick.draw(context);
+}
