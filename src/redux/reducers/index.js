@@ -1,8 +1,6 @@
 import { combineReducers } from 'redux';
-import todos from './todos'; // todo reducers
-import visibilityFilter from './visibilityFilter'; // todo reducers
+import tracks from './tracks';
 
 export default combineReducers({
-  todos,
-  visibilityFilter
+  tracks
 });

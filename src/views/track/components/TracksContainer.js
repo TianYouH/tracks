@@ -25,7 +25,7 @@ class TracksContainer extends Component {
           dataSource={data}
           renderItem={item => (
             <List.Item>
-              <Typography.Text mark>Load-</Typography.Text> {item}
+              <Typography.Text underline>Load-</Typography.Text> {item}
             </List.Item>
           )}
         />

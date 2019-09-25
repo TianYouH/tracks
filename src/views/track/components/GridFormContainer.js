@@ -5,10 +5,12 @@ class GridFormContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {};
+    this.onClearClick = this.onClearClick.bind(this);
+    this.onSaveClick = this.onSaveClick.bind(this);
   }
 
   onClearClick() {
-    console.log('清除被点击');
+    console.log('清除被点击', this);
   }
 
   onSaveClick() {
