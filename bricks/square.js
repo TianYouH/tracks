@@ -6,7 +6,7 @@ var Square = function () {
 }
 
 Square.prototype.draw = function (context) {
-  console.log('绘制方形');
+  // console.log('绘制方形');
   context.save(); // 保存context当前状况，相当于一次入栈处理
 
   context.translate(this.column * BRICK_SIZE, this.row * BRICK_SIZE);

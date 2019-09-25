@@ -6,7 +6,7 @@ var Circle = function () {
 }
 
 Circle.prototype.draw = function (context) {
-  var radius = BRICK_SIZE / 2;
+  let radius = BRICK_SIZE / 2;
 
   context.save(); // 保存context当前状况，相当于一次入栈处理
 
