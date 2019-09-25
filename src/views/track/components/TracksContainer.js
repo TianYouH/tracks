@@ -12,7 +12,7 @@ class TracksContainer extends Component {
 
   render() {
     return (
-      <section id='tracks-container' >
+      <section id='tracks-container' style={{ width: '300px' }} >
         <h1>存储路径</h1>
       </section>
     );

@@ -12,9 +12,11 @@ class Track extends Component {
 
   render() {
     return (
-      <div>
-        <GridContainer></GridContainer>
-        <GridFormContainer></GridFormContainer>
+      <div style={{ display: 'flex' }} >
+        <section id='grid-container' style={{ width: '300px', marginRight: '50px' }} >
+          <GridContainer></GridContainer>
+          <GridFormContainer></GridFormContainer>
+        </section>
         <BricksContainer></BricksContainer>
         <TracksContainer></TracksContainer>
       </div>
