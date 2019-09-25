@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button, Input } from 'antd';
 
 class GridFormContainer extends Component {
   constructor(props) {
@@ -16,11 +17,11 @@ class GridFormContainer extends Component {
 
   render() {
     return (
-      <form>
-        <button onClick={this.onClearClick} type='button' id='clear-track' >清除</button>
-        <button onClick={this.onSaveClick} type='button' id='save-track' >保存</button>
-        <input type='text' id='track-name' placeholder='路径名称' />
-      </form>
+      <div>
+        <Button onClick={this.onClearClick} id='clear-track' >清除</Button>
+        <Button onClick={this.onSaveClick} id='save-track' >保存</Button>
+        <Input id='track-name' placeholder='路径名称' />
+      </div>
     );
   }
 }

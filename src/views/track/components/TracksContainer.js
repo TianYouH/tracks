@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { List, Typography } from 'antd';
 
 class TracksContainer extends Component {
   constructor(props) {
@@ -11,9 +12,23 @@ class TracksContainer extends Component {
   }
 
   render() {
+    const data = [
+      'huang',
+      'jin',
+      'liang'
+    ];
     return (
       <section id='tracks-container' style={{ width: '300px' }} >
-        <h1>存储路径</h1>
+        <List
+          header={<div>存储路径</div>}
+          bordered
+          dataSource={data}
+          renderItem={item => (
+            <List.Item>
+              <Typography.Text mark>Load-</Typography.Text> {item}
+            </List.Item>
+          )}
+        />
       </section>
     );
   }

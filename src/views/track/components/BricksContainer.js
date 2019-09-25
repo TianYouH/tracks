@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { Button } from 'antd';
 class BricksContainer extends Component {
   constructor(props) {
     super(props);
@@ -12,13 +12,11 @@ class BricksContainer extends Component {
 
   render() {
     return (
-      <section id='bricks-container' style={{ width: '100px', marginRight: '50px' }} >
-        <form>
-          <button onClick={this.onBrickClick} type='button' id='square-brick' >方形</button>
-          <button onClick={this.onBrickClick} type='button' id='triangle-brick' >三角</button>
-          <button onClick={this.onBrickClick} type='button' id='circle-brick' >圆形</button>
-          <button onClick={this.onBrickClick} type='button' id='curve-brick' >扇形</button>
-        </form>
+      <section id='bricks-container' style={{ width: '100px' }} >
+        <Button onClick={this.onBrickClick} id='square-brick' >方形</Button>
+        <Button onClick={this.onBrickClick} id='triangle-brick' >三角</Button>
+        <Button onClick={this.onBrickClick} id='circle-brick' >圆形</Button>
+        <Button onClick={this.onBrickClick} id='curve-brick' >扇形</Button>
       </section>
     );
   }
