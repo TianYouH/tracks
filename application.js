@@ -19,53 +19,52 @@ var grid = null; // 网格类实例
 var selectedBrickClass = null;
 var currentButton = null;
 
-// window.onload = function () {
-//   canvas = document.getElementById('grid');
-//   context = canvas.getContext('2d');
-
-//   grid = new Grid(gridHeight, gridHeight, BRICK_SIZE);
-//   store = new Store();
-//   initUI();
-//   draw();  
-// }
-
-$(document).ready(function () {
+window.onload = function () {
   canvas = document.getElementById('grid');
   context = canvas.getContext('2d');
-
+  
   grid = new Grid(gridHeight, gridHeight, BRICK_SIZE);
   store = new Store();
-  initUI();
-  draw();
-});
-
-// 初始化单击事件
-function initUI() {
-  $(canvas).click(onGridClicked);
-
-  $('#bricks-container button').click(function (event) {
-    event.preventDefault();
-    
-    let id = $(this).attr('id');
-    setBrick(id);
-  });
-
-  $('#clear-track').click(function (event) {
-    event.preventDefault();
   
-    grid.clear();
+  draw();
+}
+
+// 网格点击事件
+function onGridClicked(event) {
+
+  let mouseX = event.offsetX || event.layerX;
+  let mouseY = event.offsetY || event.layerY;
+
+  let column = Math.floor(mouseX / BRICK_SIZE);
+  let row = Math.floor(mouseY / BRICK_SIZE);
+  let selectedBrick = grid.getBrickAt(column, row);
+  if (selectedBrick) {
+    selectedBrick.rotation += 90;
     draw();
-  })
-
-  $('#save-track').click(function (event) {
-    event.preventDefault();
-    
-    let trackID = store.saveTrack(grid.bricks);
-    let trackName = $('#track-name').val();
-
-    addTrackToList(trackID, trackName);
-  })
+  } else {
+    createBrickAt(column, row);
+  }
 };
+
+// 砖块类型点击事件
+function onBrickClick(event) {
+  let id = event.target.id;
+  setBrick(id);
+}
+
+// 清除按钮点击事件
+function onClearClick(event) {
+  grid.clear();
+  draw();
+}
+
+// 保存按钮点击事件
+function onSaveClick(event) {
+  let trackID = store.saveTrack(grid.bricks);
+  let trackName = document.getElementById('track-name').value;
+
+  addTrackToList(trackID, trackName);
+}
 
 // 重置画布
 function clearCanvas() {
@@ -83,22 +82,6 @@ function draw() {
   grid.draw(context);
 };
 
-// 网格点击事件
-function onGridClicked(event) {
-  let mouseX = event.offsetX || event.layerX;
-  let mouseY = event.offsetY || event.layerY;
-
-  let column = Math.floor(mouseX / BRICK_SIZE);
-  let row = Math.floor(mouseY / BRICK_SIZE);
-  let selectedBrick = grid.getBrickAt(column, row);
-  if (selectedBrick) {
-    selectedBrick.rotation += 90;
-    draw();
-  } else {
-    createBrickAt(column, row);
-  }
-};
-
 // 创建砖块
 function createBrickAt(column, row) {
   if (!selectedBrickClass) return;
@@ -111,11 +94,12 @@ function createBrickAt(column, row) {
 
 // 设置选中砖块类型
 function setBrick (buttonID) {
+  // console.log('选中的id', buttonID);
   if (currentButton) {
-    currentButton.removeAttr('disabled');
+    currentButton.disabled = false;
   }
-  currentButton = $('#' + buttonID);
-  currentButton.attr('disabled', 'disabled');
+  currentButton = document.getElementById(buttonID);
+  currentButton.disabled = true;
 
   switch (buttonID) {
     case 'square-brick':
@@ -135,19 +119,24 @@ function setBrick (buttonID) {
 
 // 添加 保存轨迹列表
 function addTrackToList(ID, name) {
-  let entry = $('<p>');
-  let link = $("<a href=''>Load</a>");
-
-  link.click(function (event) {
+  let entry = document.createElement('p');
+  let link = document.createElement('a');
+  link.text = 'Load-'
+  link.href = '';
+  link.addEventListener('click', function (event) {
     event.preventDefault();
 
     loadTrack(ID);
-  });
+  })
 
-  entry.append(link).append('-' + name);
-  $('#tracks-container').append(entry);
+  entry.append(link);
+  entry.append('-' + name);
+
+  let trackContainer = document.getElementById('tracks-container');
+  trackContainer.append(entry);
 }
 
+// 根据ID加载轨迹
 function loadTrack(ID) {
   grid.bricks = store.getTrack(ID);
 

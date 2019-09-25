@@ -10,28 +10,27 @@
 <body>
   <!-- 网格 -->
   <section id='grid-container' >
-    <canvas id="grid" onclick="onGridClicked" ></canvas>
+    <canvas id="grid" onclick="onGridClicked(event);" ></canvas>
     <form>
-      <button type="button" id="clear-track" >清除</button>
-      <button type="button" id='save-track' >保存</button>
+      <button onclick="onClearClick(event);" type="button" id="clear-track" >清除</button>
+      <button onclick="onSaveClick(event);" type="button" id='save-track' >保存</button>
       <input type="text" id="track-name" placeholder="路径名称" >
     </form>
   </section>
   <!-- 砖块 -->
   <section id="bricks-container" >
     <form>
-      <button type='button' id="square-brick" >方形</button>
-      <button type='button' id="triangle-brick" >三角</button>
-      <button type='button' id="circle-brick" >圆形</button>
-      <button type='button' id="curve-brick" >扇形</button>
+      <button  onclick="onBrickClick(event);" type='button' id="square-brick" >方形</button>
+      <button  onclick="onBrickClick(event);" type='button' id="triangle-brick" >三角</button>
+      <button  onclick="onBrickClick(event);" type='button' id="circle-brick" >圆形</button>
+      <button  onclick="onBrickClick(event);" type='button' id="curve-brick" >扇形</button>
     </form>
   </section>
   <!-- 路径列表 -->
   <section id='tracks-container' >
     <h1>存储路径</h1>
   </section>
-
-  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+  
   <script src="./grid.js"></script>
   <script src="./store.js"></script>
   <script src="./bricks/square.js"></script>
