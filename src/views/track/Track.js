@@ -1,12 +1,25 @@
-import React from 'react';
-// import Footer from './components/Footer';
-// import AddTodo from './components/AddTodo';
-// import VisibleTodoList from './components/todo-list/VisibleTodoList';
+import React, { Component } from 'react';
+import GridContainer from './components/GridContainer';
+import GridFormContainer from './components/GridFormContainer';
+import BricksContainer from './components/BricksContainer';
+import TracksContainer from './components/TracksContainer';
 
-const Track = () => (
-  <div>
-    轨道
-  </div>
-);
+class Track extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  render() {
+    return (
+      <div>
+        <GridContainer></GridContainer>
+        <GridFormContainer></GridFormContainer>
+        <BricksContainer></BricksContainer>
+        <TracksContainer></TracksContainer>
+      </div>
+    );
+  }
+}
 
 export default Track;
