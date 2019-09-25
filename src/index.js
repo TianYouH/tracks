@@ -5,7 +5,6 @@ import { createStore } from 'redux';
 import rootReducer from './redux/reducers';
 import 'normalize.css';
 import './style/index.scss';
-import 'antd-mobile/dist/antd-mobile.css';
 import * as serviceWorker from './serviceWorker';
 import App from './App';
 
