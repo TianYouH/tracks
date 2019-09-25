@@ -19,6 +19,16 @@ var grid = null; // 网格类实例
 var selectedBrickClass = null;
 var currentButton = null;
 
+// window.onload = function () {
+//   canvas = document.getElementById('grid');
+//   context = canvas.getContext('2d');
+
+//   grid = new Grid(gridHeight, gridHeight, BRICK_SIZE);
+//   store = new Store();
+//   initUI();
+//   draw();  
+// }
+
 $(document).ready(function () {
   canvas = document.getElementById('grid');
   context = canvas.getContext('2d');
