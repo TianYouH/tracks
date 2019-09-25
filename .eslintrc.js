@@ -18,6 +18,7 @@ module.exports = {
   ],
   rules: {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    'react/no-string-refs': 0,
     'accessor-pairs': 2,
     'arrow-spacing': [2, { before: true, after: true }],
     'block-spacing': [2, 'always'],

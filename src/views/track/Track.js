@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import GridContainer from './components/GridContainer';
+import ConnectGridContainer from './components/grid-container/ConnectGridContainer';
 import GridFormContainer from './components/GridFormContainer';
 import BricksContainer from './components/BricksContainer';
 import TracksContainer from './components/TracksContainer';
@@ -14,7 +14,7 @@ class Track extends Component {
     return (
       <div style={{ display: 'flex' }} >
         <section id='grid-container' style={{ width: '300px', marginRight: '50px' }} >
-          <GridContainer></GridContainer>
+          <ConnectGridContainer></ConnectGridContainer>
           <GridFormContainer></GridFormContainer>
         </section>
         <BricksContainer></BricksContainer>
