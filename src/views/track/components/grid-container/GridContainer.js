@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Grid from './grid';
-import Store from './store';
+import Grid from '../../class/grid';
+import Store from '../../class/store';
 import { gridWidth, gridHeight, canvasWidth, canvasHeight, BRICK_SIZE } from '@/redux/reducers/tracks';
 
 class GridContainer extends Component {

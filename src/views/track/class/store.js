@@ -1,8 +1,7 @@
-/* eslint-disable no-unused-vars */
-import Circle from '../../components/bricks-container/bricks/circle';
-import Curve from '../../components/bricks-container/bricks/curve';
-import Square from '../../components/bricks-container/bricks/square';
-import Triangle from '../../components/bricks-container/bricks/triangle';
+import Circle from './bricks/circle';
+import Curve from './bricks/curve';
+import Square from './bricks/square';
+import Triangle from './bricks/triangle';
 
 export default class Store {
   constructor() {

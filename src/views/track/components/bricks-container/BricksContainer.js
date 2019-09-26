@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Button } from 'antd';
 import PropTypes from 'prop-types';
-import Circle from './bricks/circle';
-import Curve from './bricks/curve';
-import Square from './bricks/square';
-import Triangle from './bricks/triangle';
+import Circle from '../../class/bricks/circle';
+import Curve from '../../class/bricks/curve';
+import Square from '../../class/bricks/square';
+import Triangle from '../../class/bricks/triangle';
 
 class BricksContainer extends Component {
   constructor(props) {
