@@ -5,24 +5,12 @@ import PropTypes from 'prop-types';
 class GridFormContainer extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      trackName: ''
-    };
-    this.onClearClick = this.onClearClick.bind(this);
-    this.onSaveClick = this.onSaveClick.bind(this);
+    this.state = {};
   }
 
   static propTypes = {
     onClearClick: PropTypes.func.isRequired,
     onSaveClick: PropTypes.func.isRequired
-  }
-
-  onClearClick() {
-    console.log('清除被点击', this);
-  }
-
-  onSaveClick() {
-    console.log('保存被点击');
   }
 
   render() {

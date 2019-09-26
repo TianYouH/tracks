@@ -40,17 +40,13 @@ class Track extends Component {
   // 添加 保存轨迹列表
   addTrackToList(ID, name) {
     const { updateTrackList } = this.props;
-    // link.addEventListener('click', function (event) {
-    //   event.preventDefault();
-
-    //   loadTrack(ID);
-    // })
     updateTrackList({
       id: ID,
       name
     });
   }
 
+  // 读取轨迹
   loadTrack(id) {
     const { store, grid } = this.props;
     grid.bricks = store.getTrack(id);
