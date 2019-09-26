@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Grid from './grid';
+import Store from './store';
 import { gridWidth, gridHeight, canvasWidth, canvasHeight, BRICK_SIZE } from '@/redux/reducers/tracks';
 
 class GridContainer extends Component {
@@ -9,19 +10,23 @@ class GridContainer extends Component {
     this.state = {
       canvas: null,
       context: null,
-      grid: null
+      grid: null,
+      store: null
     };
     this.onGridClicked = this.onGridClicked.bind(this);
   }
 
   static propTypes = {
+    onRef: PropTypes.func,
     SelectedBrickClass: PropTypes.any, // 选中的类
     setContext: PropTypes.func.isRequired,
-    setGrid: PropTypes.func.isRequired
+    setGrid: PropTypes.func.isRequired,
+    setStore: PropTypes.func.isRequired
   };
 
   componentDidMount() {
-    const { setContext, setGrid } = this.props;
+    const { setContext, setGrid, setStore, onRef } = this.props;
+    onRef(this);
 
     const { canvas } = this.refs;
     canvas.addEventListener('click', this.onGridClicked);
@@ -32,7 +37,8 @@ class GridContainer extends Component {
     const grid = new Grid(gridWidth, gridHeight, BRICK_SIZE);
     setGrid(grid);
 
-    // store = new Store();
+    const store = new Store();
+    setStore(store);
 
     this.setState({
       canvas,

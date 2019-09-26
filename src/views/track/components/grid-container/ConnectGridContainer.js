@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { setContext, setGrid } from '@/redux/actions/tracks';
+import { setContext, setGrid, setStore } from '@/redux/actions/tracks';
 import GridContainer from './GridContainer';
 
 const mapStateToProps = (state, ownProps) => ({
@@ -10,7 +10,8 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   setContext: (context) => dispatch(setContext(context)),
-  setGrid: (grid) => dispatch(setGrid(grid))
+  setGrid: (grid) => dispatch(setGrid(grid)),
+  setStore: (store) => dispatch(setStore(store))
 });
 
 export default connect(

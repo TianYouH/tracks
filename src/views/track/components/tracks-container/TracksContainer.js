@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { List, Typography } from 'antd';
+import PropTypes from 'prop-types';
 
 class TracksContainer extends Component {
   constructor(props) {
@@ -7,25 +8,25 @@ class TracksContainer extends Component {
     this.state = {};
   }
 
+  static propTypes = {
+    trackList: PropTypes.array
+  };
+
   onBrickClick(event) {
     console.log('砖块被点击', event);
   }
 
   render() {
-    const data = [
-      'huang',
-      'jin',
-      'liang'
-    ];
+    const { trackList } = this.props;
     return (
       <section id='tracks-container' style={{ width: '300px' }} >
         <List
           header={<div>存储路径</div>}
           bordered
-          dataSource={data}
+          dataSource={trackList}
           renderItem={item => (
             <List.Item>
-              <Typography.Text underline>Load-</Typography.Text> {item}
+              <Typography.Text underline>Load-</Typography.Text> {item.name}
             </List.Item>
           )}
         />

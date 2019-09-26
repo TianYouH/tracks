@@ -32,6 +32,17 @@ const todos = (state = initialState, action) => {
       return Object.assign({}, state, {
         SelectedBrickClass: action.SelectedBrickClass
       });
+    case 'STE_STORE':
+      return Object.assign({}, state, {
+        store: action.store
+      });
+    case 'UPDATE_TRACKLIST':
+      return Object.assign({}, state, {
+        trackList: [
+          ...state.trackList,
+          action.track
+        ]
+      });
     default:
       return state;
   }
@@ -42,7 +53,9 @@ const initialState = {
   canvas: null, // canvas DOM 元素
   context: null, // 画布
   grid: null, // 网格类实例
-  SelectedBrickClass: null // 选中的砖块类
+  SelectedBrickClass: null, // 选中的砖块类
+  store: null, // 存储路径实体
+  trackList: [] // 存储轨迹列表
 };
 
 export default todos;

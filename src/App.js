@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Track from '@/views/track/Track';
+import ConnectTrack from '@/views/track/ConnectTrack';
 
 const PageError = () => (
   <div>
@@ -13,7 +13,7 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <Switch>
-          <Route path='/' component={Track} ></Route>
+          <Route path='/' component={ConnectTrack} ></Route>
           <Route component={PageError} ></Route>
         </Switch>
       </BrowserRouter>
