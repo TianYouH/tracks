@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ConnectGridContainer from './components/grid-container/ConnectGridContainer';
 import GridFormContainer from './components/GridFormContainer';
-import BricksContainer from './components/BricksContainer';
+import ConnectBricksContainer from './components/bricks-container/ConnectBricksContainer';
 import TracksContainer from './components/TracksContainer';
 
 class Track extends Component {
@@ -17,7 +17,7 @@ class Track extends Component {
           <ConnectGridContainer></ConnectGridContainer>
           <GridFormContainer></GridFormContainer>
         </section>
-        <BricksContainer></BricksContainer>
+        <ConnectBricksContainer></ConnectBricksContainer>
         <TracksContainer></TracksContainer>
       </div>
     );

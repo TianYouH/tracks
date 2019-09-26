@@ -15,7 +15,7 @@ class GridContainer extends Component {
   }
 
   static propTypes = {
-    SelectedBrickClass: PropTypes.any.isRequired, // 选中的类
+    SelectedBrickClass: PropTypes.any, // 选中的类
     setContext: PropTypes.func.isRequired,
     setGrid: PropTypes.func.isRequired
   };
@@ -88,7 +88,6 @@ class GridContainer extends Component {
   createBrickAt(column, row) {
     const { grid, context } = this.state;
     const { SelectedBrickClass } = this.props;
-
     if (!SelectedBrickClass) return;
     const brick = new SelectedBrickClass();
     brick.column = column;

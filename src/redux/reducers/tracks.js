@@ -28,6 +28,10 @@ const todos = (state = initialState, action) => {
       return Object.assign({}, state, {
         grid: action.grid
       });
+    case 'STE_SELECTED_BRICK_CLASS':
+      return Object.assign({}, state, {
+        SelectedBrickClass: action.SelectedBrickClass
+      });
     default:
       return state;
   }
@@ -37,7 +41,8 @@ const initialState = {
   // canvas 变量
   canvas: null, // canvas DOM 元素
   context: null, // 画布
-  grid: null // 网格类实例
+  grid: null, // 网格类实例
+  SelectedBrickClass: null // 选中的砖块类
 };
 
 export default todos;

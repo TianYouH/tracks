@@ -1,6 +1,7 @@
 const STE_CANVAS = 'STE_CANVAS';
 const STE_CONTEXT = 'STE_CONTEXT';
 const STE_GRID = 'STE_GRID';
+const STE_SELECTED_BRICK_CLASS = 'STE_SELECTED_BRICK_CLASS';
 
 // tracks actions
 export const setCanvas = canvas => ({
@@ -13,7 +14,12 @@ export const setContext = context => ({
   context
 });
 
-export const setGrid = context => ({
+export const setGrid = grid => ({
   type: STE_GRID,
-  context
+  grid
+});
+
+export const setSelectedBrickClass = SelectedBrickClass => ({
+  type: STE_SELECTED_BRICK_CLASS,
+  SelectedBrickClass
 });

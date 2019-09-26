@@ -5,6 +5,7 @@ import GridContainer from './GridContainer';
 const mapStateToProps = (state, ownProps) => ({
   // 只注入需要的
   // state
+  SelectedBrickClass: state.tracks.SelectedBrickClass
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
