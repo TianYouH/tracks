@@ -15,18 +15,25 @@ class GridContainer extends Component {
   }
 
   static propTypes = {
+    SelectedBrickClass: PropTypes.any.isRequired, // 选中的类
     setContext: PropTypes.func.isRequired,
     setGrid: PropTypes.func.isRequired
   };
 
   componentDidMount() {
     const { setContext, setGrid } = this.props;
+
     const { canvas } = this.refs;
+    canvas.addEventListener('click', this.onGridClicked);
+
     const context = canvas.getContext('2d');
     setContext(context);
+
     const grid = new Grid(gridWidth, gridHeight, BRICK_SIZE);
     setGrid(grid);
+
     // store = new Store();
+
     this.setState({
       canvas,
       context,
@@ -58,14 +65,40 @@ class GridContainer extends Component {
     canvas.height = canvasHeight;
   }
 
-  onGridClicked(event) {
-    console.log('事件：', { a: event.target });
-    console.log('事件：', { a: event.offsetX });
-    console.log('事件：', { a: event.layerX });
+  // 网格点击事件
+  onGridClicked (event) {
+    const { grid } = this.state;
+    // console.log('事件：', event);
+    const mouseX = event.offsetX || event.layerX;
+    const mouseY = event.offsetY || event.layerY;
+
+    const column = Math.floor(mouseX / BRICK_SIZE);
+    const row = Math.floor(mouseY / BRICK_SIZE);
+
+    const selectedBrick = grid.getBrickAt(column, row);
+    if (selectedBrick) {
+      selectedBrick.rotation += 90;
+      this.draw();
+    } else {
+      this.createBrickAt(column, row);
+    }
+  }
+
+  // 创建砖块
+  createBrickAt(column, row) {
+    const { grid, context } = this.state;
+    const { SelectedBrickClass } = this.props;
+
+    if (!SelectedBrickClass) return;
+    const brick = new SelectedBrickClass();
+    brick.column = column;
+    brick.row = row;
+
+    grid.addBrick(brick, context);
   }
 
   render() {
-    return <canvas ref='canvas' id='grid' onClick={this.onGridClicked}></canvas>;
+    return <canvas ref='canvas' id='grid' ></canvas>;
   }
 }
 
