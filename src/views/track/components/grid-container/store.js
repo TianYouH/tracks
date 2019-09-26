@@ -1,3 +1,9 @@
+/* eslint-disable no-unused-vars */
+import Circle from '../../components/bricks-container/bricks/circle';
+import Curve from '../../components/bricks-container/bricks/curve';
+import Square from '../../components/bricks-container/bricks/square';
+import Triangle from '../../components/bricks-container/bricks/triangle';
+
 export default class Store {
   constructor() {
     this.tracks = [];
@@ -34,7 +40,21 @@ export default class Store {
 
   // 将数据转换成包含实际砖块对象的数组
   getBrickForData(brickData) {
-    const brick = new window[brickData.type]();
+    let brick = null;
+    switch (brickData.type) {
+      case 'Circle':
+        brick = new Circle();
+        break;
+      case 'Curve':
+        brick = new Curve();
+        break;
+      case 'Square':
+        brick = new Square();
+        break;
+      default:
+        brick = new Triangle();
+        break;
+    }
 
     brick.column = brickData.column;
     brick.row = brickData.row;

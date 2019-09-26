@@ -12,6 +12,7 @@ class Track extends Component {
     this.state = {};
     this.onClearClick = this.onClearClick.bind(this);
     this.onSaveClick = this.onSaveClick.bind(this);
+    this.loadTrack = this.loadTrack.bind(this);
   }
 
   static propTypes = {
@@ -56,23 +57,6 @@ class Track extends Component {
 
     this.refGridContainer.draw();
   }
-  // addTrackToList(ID, name) {
-  //   let entry = document.createElement('p');
-  //   let link = document.createElement('a');
-  //   link.text = 'Load-'
-  //   link.href = '';
-  //   link.addEventListener('click', function (event) {
-  //     event.preventDefault();
-
-  //     loadTrack(ID);
-  //   })
-
-  //   entry.append(link);
-  //   entry.append('-' + name);
-
-  //   let trackContainer = document.getElementById('tracks-container');
-  //   trackContainer.append(entry);
-  // }
 
   render() {
     return (
