@@ -6,18 +6,25 @@ class TracksContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {};
+    // this.onTrackClick = this.onTrackClick.bind(this);
   }
 
   static propTypes = {
-    trackList: PropTypes.array
+    trackList: PropTypes.array,
+    grid: PropTypes.object,
+    store: PropTypes.object,
+    loadTrack: PropTypes.func
   };
 
-  onBrickClick(event) {
-    console.log('砖块被点击', event);
-  }
+  // onTrackClick(id) {
+  //   const { grid, store } = this.props;
+  //   console.log('轨迹被点击', event);
+  //   grid.bricks = store.getTrack(id);
+  //   // draw();
+  // }
 
   render() {
-    const { trackList } = this.props;
+    const { trackList, loadTrack } = this.props;
     return (
       <section id='tracks-container' style={{ width: '300px' }} >
         <List
@@ -26,7 +33,7 @@ class TracksContainer extends Component {
           dataSource={trackList}
           renderItem={item => (
             <List.Item>
-              <Typography.Text underline>Load-</Typography.Text> {item.name}
+              <Typography.Text onClick={() => loadTrack(item.id)} underline>Load-</Typography.Text> {item.name}
             </List.Item>
           )}
         />

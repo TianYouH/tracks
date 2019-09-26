@@ -49,6 +49,13 @@ class Track extends Component {
       name
     });
   }
+
+  loadTrack(id) {
+    const { store, grid } = this.props;
+    grid.bricks = store.getTrack(id);
+
+    this.refGridContainer.draw();
+  }
   // addTrackToList(ID, name) {
   //   let entry = document.createElement('p');
   //   let link = document.createElement('a');
@@ -78,7 +85,7 @@ class Track extends Component {
           ></GridFormContainer>
         </section>
         <ConnectBricksContainer></ConnectBricksContainer>
-        <ConnectTracksContainer></ConnectTracksContainer>
+        <ConnectTracksContainer loadTrack={this.loadTrack} ></ConnectTracksContainer>
       </div>
     );
   }
