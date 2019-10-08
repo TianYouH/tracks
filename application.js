@@ -23,7 +23,7 @@ window.onload = function () {
   canvas = document.getElementById('grid');
   context = canvas.getContext('2d');
   
-  grid = new Grid(gridHeight, gridHeight, BRICK_SIZE);
+  grid = new Grid(gridWidth, gridHeight, BRICK_SIZE);
   store = new Store();
   
   draw();
